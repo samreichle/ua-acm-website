@@ -46,7 +46,9 @@ namespace ua_acm_website
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+                // app.UseExceptionHandler("/Members/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -62,7 +64,7 @@ namespace ua_acm_website
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Members}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

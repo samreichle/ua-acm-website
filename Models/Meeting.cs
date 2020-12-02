@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 
 namespace ua_acm_website.Models
 {
-    public class Member
+    public class Meeting
     {
         [Key]
         public int Id { get; set; }
 
-        public string LastName { get; set; }
+        public DateTime Date { get; set; }
 
-        public string FirstName { get; set; }
+        public string CompanyName { get; set; }
 
-        public string Email { get; set; }
-
-        public Boolean DuesPaid { get; set; }
-
-
+        public string Topic { get; set; }
     }
 }

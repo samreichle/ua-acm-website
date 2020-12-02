@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ua_acm_website.Models;
 
 namespace ua_acm_website.Data
 {
@@ -12,5 +13,10 @@ namespace ua_acm_website.Data
             : base(options)
         {
         }
+
+        public DbSet<Member> Member { get; set; }
+
+        public DbSet<Meeting> Meeting { get; set; }
+
     }
 }
