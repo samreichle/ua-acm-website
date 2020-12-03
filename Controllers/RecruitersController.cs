@@ -10,22 +10,22 @@ using ua_acm_website.Models;
 
 namespace ua_acm_website.Views
 {
-    public class MeetingsController : Controller
+    public class RecruitersController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public MeetingsController(ApplicationDbContext context)
+        public RecruitersController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Meetings
+        // GET: Recruiters
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Meeting.ToListAsync());
+            return View(await _context.Recruiter.ToListAsync());
         }
 
-        // GET: Meetings/Details/5
+        // GET: Recruiters/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace ua_acm_website.Views
                 return NotFound();
             }
 
-            var meeting = await _context.Meeting
+            var recruiter = await _context.Recruiter
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (meeting == null)
+            if (recruiter == null)
             {
                 return NotFound();
             }
 
-            return View(meeting);
+            return View(recruiter);
         }
 
-        // GET: Meetings/Create
+        // GET: Recruiters/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Meetings/Create
+        // POST: Recruiters/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Company,Date,Location,Recruiter,Topic,Attendance")] Meeting meeting)
+        public async Task<IActionResult> Create([Bind("Id,Company,LastName,FirstName,Email,PhoneNumber,CompanyWebsite")] Recruiter recruiter)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(meeting);
+                _context.Add(recruiter);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(meeting);
+            return View(recruiter);
         }
 
-        // GET: Meetings/Edit/5
+        // GET: Recruiters/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace ua_acm_website.Views
                 return NotFound();
             }
 
-            var meeting = await _context.Meeting.FindAsync(id);
-            if (meeting == null)
+            var recruiter = await _context.Recruiter.FindAsync(id);
+            if (recruiter == null)
             {
                 return NotFound();
             }
-            return View(meeting);
+            return View(recruiter);
         }
 
-        // POST: Meetings/Edit/5
+        // POST: Recruiters/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Company,Date,Location,Recruiter,Topic,Attendance")] Meeting meeting)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Company,LastName,FirstName,Email,PhoneNumber,CompanyWebsite")] Recruiter recruiter)
         {
-            if (id != meeting.Id)
+            if (id != recruiter.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace ua_acm_website.Views
             {
                 try
                 {
-                    _context.Update(meeting);
+                    _context.Update(recruiter);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MeetingExists(meeting.Id))
+                    if (!RecruiterExists(recruiter.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace ua_acm_website.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(meeting);
+            return View(recruiter);
         }
 
-        // GET: Meetings/Delete/5
+        // GET: Recruiters/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace ua_acm_website.Views
                 return NotFound();
             }
 
-            var meeting = await _context.Meeting
+            var recruiter = await _context.Recruiter
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (meeting == null)
+            if (recruiter == null)
             {
                 return NotFound();
             }
 
-            return View(meeting);
+            return View(recruiter);
         }
 
-        // POST: Meetings/Delete/5
+        // POST: Recruiters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var meeting = await _context.Meeting.FindAsync(id);
-            _context.Meeting.Remove(meeting);
+            var recruiter = await _context.Recruiter.FindAsync(id);
+            _context.Recruiter.Remove(recruiter);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MeetingExists(int id)
+        private bool RecruiterExists(int id)
         {
-            return _context.Meeting.Any(e => e.Id == id);
+            return _context.Recruiter.Any(e => e.Id == id);
         }
     }
 }

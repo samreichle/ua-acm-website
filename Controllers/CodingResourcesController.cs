@@ -10,22 +10,22 @@ using ua_acm_website.Models;
 
 namespace ua_acm_website.Views
 {
-    public class MeetingsController : Controller
+    public class CodingResourcesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public MeetingsController(ApplicationDbContext context)
+        public CodingResourcesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Meetings
+        // GET: CodingResources
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Meeting.ToListAsync());
+            return View(await _context.CodingResource.ToListAsync());
         }
 
-        // GET: Meetings/Details/5
+        // GET: CodingResources/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace ua_acm_website.Views
                 return NotFound();
             }
 
-            var meeting = await _context.Meeting
+            var codingResource = await _context.CodingResource
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (meeting == null)
+            if (codingResource == null)
             {
                 return NotFound();
             }
 
-            return View(meeting);
+            return View(codingResource);
         }
 
-        // GET: Meetings/Create
+        // GET: CodingResources/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Meetings/Create
+        // POST: CodingResources/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Company,Date,Location,Recruiter,Topic,Attendance")] Meeting meeting)
+        public async Task<IActionResult> Create([Bind("Id,Resource,TopicCovered,ApplicableClasses,ResourceLink")] CodingResource codingResource)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(meeting);
+                _context.Add(codingResource);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(meeting);
+            return View(codingResource);
         }
 
-        // GET: Meetings/Edit/5
+        // GET: CodingResources/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace ua_acm_website.Views
                 return NotFound();
             }
 
-            var meeting = await _context.Meeting.FindAsync(id);
-            if (meeting == null)
+            var codingResource = await _context.CodingResource.FindAsync(id);
+            if (codingResource == null)
             {
                 return NotFound();
             }
-            return View(meeting);
+            return View(codingResource);
         }
 
-        // POST: Meetings/Edit/5
+        // POST: CodingResources/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Company,Date,Location,Recruiter,Topic,Attendance")] Meeting meeting)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Resource,TopicCovered,ApplicableClasses,ResourceLink")] CodingResource codingResource)
         {
-            if (id != meeting.Id)
+            if (id != codingResource.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace ua_acm_website.Views
             {
                 try
                 {
-                    _context.Update(meeting);
+                    _context.Update(codingResource);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MeetingExists(meeting.Id))
+                    if (!CodingResourceExists(codingResource.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace ua_acm_website.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(meeting);
+            return View(codingResource);
         }
 
-        // GET: Meetings/Delete/5
+        // GET: CodingResources/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace ua_acm_website.Views
                 return NotFound();
             }
 
-            var meeting = await _context.Meeting
+            var codingResource = await _context.CodingResource
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (meeting == null)
+            if (codingResource == null)
             {
                 return NotFound();
             }
 
-            return View(meeting);
+            return View(codingResource);
         }
 
-        // POST: Meetings/Delete/5
+        // POST: CodingResources/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var meeting = await _context.Meeting.FindAsync(id);
-            _context.Meeting.Remove(meeting);
+            var codingResource = await _context.CodingResource.FindAsync(id);
+            _context.CodingResource.Remove(codingResource);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MeetingExists(int id)
+        private bool CodingResourceExists(int id)
         {
-            return _context.Meeting.Any(e => e.Id == id);
+            return _context.CodingResource.Any(e => e.Id == id);
         }
     }
 }

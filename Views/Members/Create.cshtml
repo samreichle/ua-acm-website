@@ -14,6 +14,11 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Position" class="control-label"></label>
+                <input asp-for="Position" class="form-control" />
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
@@ -32,6 +37,11 @@
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="DuesPaid" /> @Html.DisplayNameFor(model => model.DuesPaid)
                 </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="MeetingsAttended" class="control-label"></label>
+                <input asp-for="MeetingsAttended" class="form-control" />
+                <span asp-validation-for="MeetingsAttended" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

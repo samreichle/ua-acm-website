@@ -54,7 +54,7 @@ namespace ua_acm_website.Views
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,LastName,FirstName,Email,DuesPaid")] Member member)
+        public async Task<IActionResult> Create([Bind("Id,Position,LastName,FirstName,Email,DuesPaid,MeetingsAttended")] Member member)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace ua_acm_website.Views
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,LastName,FirstName,Email,DuesPaid")] Member member)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Position,LastName,FirstName,Email,DuesPaid,MeetingsAttended")] Member member)
         {
             if (id != member.Id)
             {

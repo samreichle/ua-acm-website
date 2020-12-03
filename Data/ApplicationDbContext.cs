@@ -18,5 +18,9 @@ namespace ua_acm_website.Data
 
         public DbSet<Meeting> Meeting { get; set; }
 
+        public DbSet<Recruiter> Recruiter { get; set; }
+
+        public DbSet<CodingResource> CodingResource { get; set; }
+
     }
 }

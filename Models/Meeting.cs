@@ -11,10 +11,16 @@ namespace ua_acm_website.Models
         [Key]
         public int Id { get; set; }
 
-        public DateTime Date { get; set; }
+        public string Company { get; set; }
 
-        public string CompanyName { get; set; }
+        public DateTime Date { get; set; }
+        
+        public string Location { get; set; }
+
+        public string Recruiter { get; set; }
 
         public string Topic { get; set; }
+
+        public int Attendance { get; set; }
     }
 }
