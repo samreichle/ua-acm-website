@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -43,12 +44,14 @@ namespace ua_acm_website.Views
             return View(meeting);
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // GET: Meetings/Create
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // POST: Meetings/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -65,6 +68,7 @@ namespace ua_acm_website.Views
             return View(meeting);
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // GET: Meetings/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -81,6 +85,7 @@ namespace ua_acm_website.Views
             return View(meeting);
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // POST: Meetings/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -116,6 +121,7 @@ namespace ua_acm_website.Views
             return View(meeting);
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // GET: Meetings/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -134,6 +140,7 @@ namespace ua_acm_website.Views
             return View(meeting);
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // POST: Meetings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

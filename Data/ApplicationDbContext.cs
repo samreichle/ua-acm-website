@@ -22,5 +22,7 @@ namespace ua_acm_website.Data
 
         public DbSet<CodingResource> CodingResource { get; set; }
 
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
     }
 }

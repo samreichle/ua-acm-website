@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using ua_acm_website.Models;
 
 namespace ua_acm_website.Views
 {
+    [Authorize(Roles = SD.Admin + "," + SD.Officer + "," + SD.Member)]
     public class CodingResourcesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -43,12 +45,14 @@ namespace ua_acm_website.Views
             return View(codingResource);
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // GET: CodingResources/Create
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // POST: CodingResources/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -65,6 +69,7 @@ namespace ua_acm_website.Views
             return View(codingResource);
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // GET: CodingResources/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -81,6 +86,7 @@ namespace ua_acm_website.Views
             return View(codingResource);
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // POST: CodingResources/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -116,6 +122,7 @@ namespace ua_acm_website.Views
             return View(codingResource);
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // GET: CodingResources/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -134,6 +141,7 @@ namespace ua_acm_website.Views
             return View(codingResource);
         }
 
+        [Authorize(Roles = SD.Admin + "," + SD.Officer)]
         // POST: CodingResources/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

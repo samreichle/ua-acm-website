@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ua_acm_website.Data;
 using ua_acm_website.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ua_acm_website.Views
 {
+    [Authorize]
     public class MembersController : Controller
     {
         private readonly ApplicationDbContext _context;
