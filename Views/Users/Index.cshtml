@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Manage Users</h1>
+<h1>Manage Members</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -17,7 +17,16 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                Dues Paid
+            </th>
+            <th>
+                Meetings Attended
             </th>
             <th></th>
         </tr>
@@ -29,7 +38,16 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @item.FirstName @item.LastName
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DuesPaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeetingsAttended)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
