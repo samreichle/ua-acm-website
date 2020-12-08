@@ -55,8 +55,7 @@ namespace ua_acm_website
                 {
                     UserName = "admin@gmail.com",
                     Email = "admin@gmail.com",
-                    EmailConfirmed = true,
-                    Name = "ACM Admin"
+                    EmailConfirmed = true
 
                 }, "ILoveLucy1918!").GetAwaiter().GetResult();
 

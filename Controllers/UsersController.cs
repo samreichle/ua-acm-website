@@ -80,7 +80,11 @@ namespace ua_acm_website.Views
                     UserName = submitUser.AppUser.Email,
                     Email = submitUser.AppUser.Email,
                     EmailConfirmed = true,
-                    Name = submitUser.AppUser.Name
+                    LastName = submitUser.AppUser.LastName,
+                    FirstName = submitUser.AppUser.FirstName,
+                    Position = submitUser.AppUser.Position,
+                    DuesPaid = submitUser.AppUser.DuesPaid,
+                    MeetingsAttended = submitUser.AppUser.MeetingsAttended
                 };
                 string password = Request.Form["Password"].ToString();
                 var result = await _userManager.CreateAsync(user, password);
@@ -160,7 +164,11 @@ namespace ua_acm_website.Views
                         return NotFound();
                     }
                     dbUser.Email = submitUser.AppUser.Email;
-                    dbUser.Name = submitUser.AppUser.Name;
+                    dbUser.LastName = submitUser.AppUser.LastName;
+                    dbUser.FirstName = submitUser.AppUser.FirstName;
+                    dbUser.Position = submitUser.AppUser.Position;
+                    dbUser.DuesPaid = submitUser.AppUser.DuesPaid;
+                    dbUser.MeetingsAttended = submitUser.AppUser.MeetingsAttended;
                     _context.Update(dbUser);
 
                     //Handle Roles

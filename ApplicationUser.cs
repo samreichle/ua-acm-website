@@ -9,7 +9,14 @@ namespace ua_acm_website
 {
     public class ApplicationUser : IdentityUser 
     {
-        [Required]
-        public string Name { get; set; }
+        public string LastName { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string Position { get; set; }
+
+        public Boolean DuesPaid { get; set; }
+
+        public int MeetingsAttended { get; set; }
     }
 }
