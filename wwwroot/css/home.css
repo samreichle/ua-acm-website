@@ -1,0 +1,16 @@
+﻿body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #ff0000;
+}
+.banner {
+    position: relative;
+    overflow: auto;
+}
+
+    .banner li {
+        list-style: none;
+    }
+
+    .banner ul li {
+        float: left;
+    }
