@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - UA ACM</title>
+    @Html.Partial("_Favicons")
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -53,15 +54,19 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - UA ACM - <a asp-area="" asp-controller="Privacy" asp-action="Index">Privacy Policy</a> - <a asp-area="" asp-controller="CodeOfConduct" asp-action="Index">Code of Conduct</a>
+            &copy; 2020 - UA ACM - <a asp-area="" asp-controller="Privacy" asp-action="Index">Privacy Policy</a> - <a asp-area="" asp-controller="CodeOfConduct" asp-action="Index">
+                Code of Conduct
+            </a>
+             - <a href="http://instagram.com/ua_acm" aria-label="Instagram"><i class="fab fa-instagram"></i></a> - 
+            <a href="https://unofficialuacs.slack.com/signup" aria-label="Slack"><i class="fab fa-slack"></i></a> - 
+            <a href="mailto:acm-off@listserv.ua.edu" aria-label="Contact by Email"><i class="fas fa-paper-plane"></i></a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/jquery-3.3.1.min.js"></script>
-    <script src="~/js/unslider.js"></script>
-    <!-- <script src="https://kit.fontawesome.com/2e8f91823c.js" crossorigin="anonymous"></script>-->
+    <
 
     @RenderSection("Scripts", required: false)
 </body>
